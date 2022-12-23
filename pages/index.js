@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from "../src/components/layout/layout";
+// import Layout from "../src/components/layout/layout";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -47,10 +47,10 @@ export default function Home() {
   );
 }
 
-Home.getLayout = function (page) {
-  return (
-    <>
-      <Layout>{page}</Layout>
-    </>
-  );
-};
+// Home.getLayout = function (page) {
+//   return (
+//     <>
+//       <Layout>{page}</Layout>
+//     </>
+//   );
+// };

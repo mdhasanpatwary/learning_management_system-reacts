@@ -8,13 +8,14 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import Logo from "../logo/Logo";
+import NavLinks from "./NavLinks";
 const logoURL = "/image/logo.png";
 
 function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="inherit" elevation={1}>
-        <Toolbar>
+        <Toolbar sx={{ gap: "1rem" }}>
           <IconButton
             size="large"
             edge="start"
@@ -25,8 +26,9 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <Logo logoURL={logoURL} width="120px" />
+          <NavLinks />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            {/* News */}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
