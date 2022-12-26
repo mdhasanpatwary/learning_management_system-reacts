@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NavLinkStyle } from "./Navbar.Style";
+import NavCategoroy from "./NavCategoroy";
 
 function NavLinks() {
   return (
@@ -13,6 +14,7 @@ function NavLinks() {
       <NavLinkStyle>
         <Link href="/contact">Contact</Link>
       </NavLinkStyle>
+      <NavCategoroy />
     </>
   );
 }
