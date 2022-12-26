@@ -1,6 +1,6 @@
 import * as React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { NavMenuLink } from "./Navbar.Style";
+import { NavMenuLink } from "./NavBar.Style";
 import NavPopover from "./NavPopover";
 
 function NavCategoroy() {
