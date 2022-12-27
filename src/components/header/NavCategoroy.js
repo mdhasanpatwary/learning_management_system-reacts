@@ -1,39 +1,43 @@
 import * as React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { NavMenuLink } from "./NavBar.Style";
+import { NavMenuLink } from "./Navbar.style";
 import NavPopover from "./NavPopover";
 
 function NavCategoroy() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorElSub, setAnchorElSub] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleClickSub = (event) => {
+    setAnchorElSub(event.currentTarget);
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setAnchorElSub(null);
   };
+  // const handleCloseSub = () => {
+  //   setAnchorElSub(null);
+  // };
 
   const open = Boolean(anchorEl);
-  const id = open ? "mouse-over-popover" : undefined;
+  const openSub = Boolean(anchorElSub);
+  // const id = open ? "mouse-over-popover" : undefined;
 
   return (
     <>
-      <div
-        onMouseEnter={handleClick}
-        // onMouseLeave={handleClose}
-        aria-owns={id}
-        aria-haspopup="true"
-      >
+      <div onMouseEnter={handleClick} onMouseLeave={handleClose}>
         <NavMenuLink>
           Categories <KeyboardArrowDownIcon />
         </NavMenuLink>
         <NavPopover
-          id={id}
           open={open}
           anchorEl={anchorEl}
-          handleClose={handleClose}
-          handleClick={handleClick}
+          openSub={openSub}
+          anchorElSub={anchorElSub}
+          handleClickSub={handleClickSub}
         />
       </div>
     </>

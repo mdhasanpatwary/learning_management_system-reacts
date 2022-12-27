@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { NavLinkStyle } from "./Navbar.Style";
+import { NavLinkStyle } from "./Navbar.style";
 import NavCategoroy from "./NavCategoroy";
 
 function NavLinks() {
   return (
     <>
-      <NavLinkStyle>
+      {/* <NavLinkStyle>
         <Link href="/">Home</Link>
       </NavLinkStyle>
       <NavLinkStyle>
@@ -13,7 +13,7 @@ function NavLinks() {
       </NavLinkStyle>
       <NavLinkStyle>
         <Link href="/contact">Contact</Link>
-      </NavLinkStyle>
+      </NavLinkStyle> */}
       <NavCategoroy />
     </>
   );
