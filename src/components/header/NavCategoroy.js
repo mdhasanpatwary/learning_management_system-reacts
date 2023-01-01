@@ -2,8 +2,10 @@ import * as React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { NavMenuLink } from "./Navbar.style";
 import NavPopover from "./NavPopover";
+import { useTranslation } from "react-i18next";
 
 function NavCategoroy() {
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElSub, setAnchorElSub] = React.useState(null);
 
@@ -18,19 +20,15 @@ function NavCategoroy() {
     setAnchorEl(null);
     setAnchorElSub(null);
   };
-  // const handleCloseSub = () => {
-  //   setAnchorElSub(null);
-  // };
 
   const open = Boolean(anchorEl);
   const openSub = Boolean(anchorElSub);
-  // const id = open ? "mouse-over-popover" : undefined;
 
   return (
     <>
       <div onMouseEnter={handleClick} onMouseLeave={handleClose}>
         <NavMenuLink>
-          Categories <KeyboardArrowDownIcon />
+          {t("Categories")} <KeyboardArrowDownIcon />
         </NavMenuLink>
         <NavPopover
           open={open}

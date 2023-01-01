@@ -1,20 +1,17 @@
 import Link from "next/link";
 import { NavLinkStyle } from "./Navbar.style";
-import NavCategoroy from "./NavCategoroy";
+import { useTranslation } from "react-i18next";
 
 function NavLinks() {
+  const { t } = useTranslation();
   return (
     <>
-      {/* <NavLinkStyle>
-        <Link href="/">Home</Link>
+      <NavLinkStyle>
+        <Link href="/">{t("Instructor")}</Link>
       </NavLinkStyle>
       <NavLinkStyle>
-        <Link href="/about">About</Link>
+        <Link href="/about">{t("My Courses")}</Link>
       </NavLinkStyle>
-      <NavLinkStyle>
-        <Link href="/contact">Contact</Link>
-      </NavLinkStyle> */}
-      <NavCategoroy />
     </>
   );
 }

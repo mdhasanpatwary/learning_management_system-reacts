@@ -1,16 +1,18 @@
 import Box from "@mui/material/Box";
 import SearchIcon from "@mui/icons-material/Search";
+import { useTranslation } from "react-i18next";
 import { Search, SearchIconWrapper, StyledInputBase } from "./Navbar.style";
 
 function SearchBox() {
+  const { t } = useTranslation();
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder="Search…"
+          placeholder={t("Search…")}
           inputProps={{ "aria-label": "search" }}
         />
       </Search>

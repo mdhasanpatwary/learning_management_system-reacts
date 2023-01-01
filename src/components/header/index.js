@@ -5,33 +5,67 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import Badge from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Divider, MenuItem } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import Logo from "../logo/Logo";
 import NavLinks from "./NavLinks";
 import Search from "./Search";
+import NavCategoroy from "./NavCategoroy";
+import Profile from "./Profile";
+import { Stack } from "@mui/system";
+import CustomLanguage from "./CustomLanguage";
 const logoURL = "/image/logo.png";
 
 function Header() {
+  const { t } = useTranslation();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="inherit" elevation={1}>
-        <Toolbar sx={{ gap: "1rem" }}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Logo logoURL={logoURL} width="120px" />
-          <NavLinks />
-          <Search />
-          {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography> */}
-          <Button color="inherit">Login</Button>
+        <Toolbar
+          sx={{
+            gap: "1rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Stack direction="row" gap="1rem" alignItems="center">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Logo logoURL={logoURL} width="120px" />
+            <NavCategoroy />
+            <Search />
+          </Stack>
+
+          <Stack direction="row" gap="1rem" alignItems="center">
+            <NavLinks />
+            <MenuItem>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge badgeContent={4} color="error">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </MenuItem>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Button color="inherit">{t("Login")}</Button>
+            <Button variant="contained">{t("Sign Up")}</Button>
+            <CustomLanguage />
+            {/* <Profile /> */}
+          </Stack>
         </Toolbar>
       </AppBar>
     </Box>

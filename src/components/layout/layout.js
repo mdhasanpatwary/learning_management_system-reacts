@@ -1,12 +1,18 @@
+import dynamic from "next/dynamic";
 import Footer from "../footer";
-import Header from "../header/index";
+// import Header from "../header/index";
 
-export default function Layout({ children }) {
+function Layout({ children }) {
+  const DynamicHeadear = dynamic(() => import("../header/index"), {
+    ssr: false,
+  });
   return (
     <>
-      <Header />
+      <DynamicHeadear />
       <main>{children}</main>
       <Footer />
     </>
   );
 }
+
+export default Layout;

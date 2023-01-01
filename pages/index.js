@@ -1,6 +1,7 @@
 import Head from "next/head";
 // import Layout from "../src/components/layout/layout";
 import styles from "../styles/Home.module.css";
+import "../src/language/i18n";
 
 export default function Home() {
   return (
