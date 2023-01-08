@@ -15,11 +15,11 @@ import { useTheme } from "@mui/material/styles";
 import { StyledMenu, TopBarButton } from "./Navbar.style";
 import { useSettings } from "../../contexts/use-settings";
 
-// const getValues = (settings) => ({
-//   direction: settings.direction,
-//   responsiveFontSizes: settings.responsiveFontSizes,
-//   theme: settings.theme,
-// });
+const getValues = (settings) => ({
+  direction: settings.direction,
+  responsiveFontSizes: settings.responsiveFontSizes,
+  theme: settings.theme,
+});
 
 let configData = {
   language: [
@@ -44,8 +44,7 @@ const CustomLanguage = ({ frommobilemenu }) => {
   const [language, setLanguage] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const { settings, saveSettings } = useSettings();
-  // const [values, setValues] = useState(getValues(settings));
-  const [values, setValues] = useState(settings);
+  const [values, setValues] = useState(getValues(settings));
   // const anchorRef = useRef(null);
   //const { global } = useSelector((state) => state.globalSettings);
 

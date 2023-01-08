@@ -13,16 +13,16 @@ export const LogoWrap = styled("div")(({ theme, height, width }) => ({
   //   },
 }));
 
-const CustomLogo = ({ logoURL, atlText, height, width }) => {
+const CustomImage = ({ src, atlText, height, width }) => {
   const router = useRouter();
   const handleClick = () => {
     router.push("/").then();
   };
   return (
     <LogoWrap width={width} height={height} onClick={handleClick}>
-      <img width={width} src={logoURL} alt={atlText} />
+      <img width={width} src={src} alt={atlText} />
       {/* <Image src={logoURL} alt={atlText} layout="fill" objectFit="contain" /> */}
     </LogoWrap>
   );
 };
-export default CustomLogo;
+export default CustomImage;

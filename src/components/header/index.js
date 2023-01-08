@@ -17,10 +17,19 @@ import NavCategoroy from "./NavCategoroy";
 import Profile from "./Profile";
 import { Stack } from "@mui/system";
 import CustomLanguage from "./CustomLanguage";
+import ThemeSwitch from "./ThemeSwitch";
+import { useRouter } from "next/router";
 const logoURL = "/image/logo.png";
 
 function Header() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const signInClick = () => {
+    router.push("/auth/sign-in");
+  };
+  const signUpClick = () => {
+    router.push("/auth/sign-up");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="inherit" elevation={1}>
@@ -42,7 +51,7 @@ function Header() {
             >
               <MenuIcon />
             </IconButton>
-            <Logo logoURL={logoURL} width="120px" />
+            <Logo src={logoURL} width="120px" />
             <NavCategoroy />
             <Search />
           </Stack>
@@ -61,8 +70,13 @@ function Header() {
               </IconButton>
             </MenuItem>
             <Divider orientation="vertical" variant="middle" flexItem />
-            <Button color="inherit">{t("Login")}</Button>
-            <Button variant="contained">{t("Sign Up")}</Button>
+            <Button onClick={signInClick} color="inherit">
+              {t("Login")}
+            </Button>
+            <Button onClick={signUpClick} variant="contained">
+              {t("Sign Up")}
+            </Button>
+            <ThemeSwitch />
             <CustomLanguage />
             {/* <Profile /> */}
           </Stack>

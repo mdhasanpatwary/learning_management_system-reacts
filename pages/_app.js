@@ -1,6 +1,8 @@
 import "../styles/globals.css";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "../src/theme";
 import { Toaster } from "react-hot-toast";
+import "../src/language/i18n";
 import Layout from "../src/components/layout/layout";
 import {
   SettingsConsumer,

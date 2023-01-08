@@ -6,7 +6,7 @@ export const CustomImageWrap = styled(Box)(
   ({ theme, width, borderRadius }) => ({
     display: "grid",
     placeItems: "center",
-    backgroundColor: "#ddd",
+    // backgroundColor: "#ddd",
     position: "relative",
     "& img": {
       objectFit: "cover",
@@ -36,7 +36,7 @@ function CustomImage({ src, altText, width, height, radius }) {
         onError={() => {
           // currentTarget.onerror = null; // prevents looping
           //   setImgSrc(placeholder.src);
-          setImgSrc("https://via.placeholder.com/300");
+          setImgSrc("https://via.placeholder.com/1200");
         }}
       />
       {/* <Image

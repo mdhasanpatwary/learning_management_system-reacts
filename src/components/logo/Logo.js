@@ -1,13 +1,8 @@
-import CustomLogo from "./CustomLogo";
+import CustomImage from "./CustomImage";
 
 const Logo = ({ logoURL, width, height }) => {
   return (
-    <CustomLogo
-      atlText="logo"
-      logoURL={logoURL}
-      width={width}
-      height={height}
-    />
+    <CustomImage atlText="logo" src={logoURL} width={width} height={height} />
   );
 };
 
