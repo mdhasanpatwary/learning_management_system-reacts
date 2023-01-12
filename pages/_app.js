@@ -10,10 +10,6 @@ import {
 } from "../src/contexts/settings-context";
 
 function MyApp({ Component, pageProps }) {
-  // const getLayout = Component.getLayout ?? ((page) => page);
-
-  // const theme = createTheme();
-
   const renderWithLayout =
     Component.getLayout ||
     function (page) {

@@ -1,4 +1,6 @@
-import { Stack, Paper, styled } from "@mui/material";
+import { Stack, styled } from "@mui/material";
+
 export const FooterWrapStyle = styled(Stack)(({ theme }) => ({
-  backgroundColor: theme.palette.neutral[300],
+  backgroundColor: theme.palette.footer.backgroundColor,
+  color: theme.palette.footer.color,
 }));

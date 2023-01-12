@@ -1,14 +1,14 @@
 import Search from "../header/Search";
 import { Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import { BannerWrap } from "./Banner.style";
 import CustomImage from "../utils/CustomImage";
+import { CustomContainer } from "../../styled-components/CustomStyled.style";
 const BannerImg = "/image/media/banner.png";
 
 const Banner = () => {
   return (
     <BannerWrap>
-      <Container maxWidth={false} sx={{ maxWidth: "1448px" }}>
+      <CustomContainer>
         <Grid container alignItems="center" justifyContent="center">
           <Grid item xs={12} lg={5}>
             <Typography variant="h1" sx={{ mb: 2 }}>
@@ -28,7 +28,7 @@ const Banner = () => {
             />
           </Grid>
         </Grid>
-      </Container>
+      </CustomContainer>
     </BannerWrap>
   );
 };

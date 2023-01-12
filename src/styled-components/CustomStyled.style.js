@@ -29,14 +29,21 @@ export const LayoutWrap = styled(Stack)(({ theme }) => ({
   minHeight: "100vh",
 }));
 
-export const FormControl = styled(Stack)(({ theme }) => ({
-  marginBottom: "2rem",
-  "& label": {
-    marginBottom: ".5rem",
-  },
-  "& input": {
-    inineSize: "100%",
-    padding: ".325rem 1rem",
-    borderRadius: ".25rem",
-  },
+// export const FormControl = styled(Stack)(({ theme }) => ({
+//   marginBottom: "2rem",
+//   "& label": {
+//     marginBottom: ".5rem",
+//   },
+//   "& input": {
+//     inineSize: "100%",
+//     padding: ".325rem 1rem",
+//     borderRadius: ".25rem",
+//   },
+// }));
+
+export const CustomContainer = styled(Stack)(({ theme, maxWidth }) => ({
+  maxInlineSize: maxWidth ? maxWidth : "1448px",
+  inlineSize: "100%",
+  paddingInline: "1rem",
+  marginInline: "auto",
 }));

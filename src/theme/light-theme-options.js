@@ -70,11 +70,8 @@ const text = {
 };
 
 const footer = {
-  inputButton: "#BBFFDF",
-  inputButtonHover: "#6dcfa6",
-  bottom: "rgba(0, 98, 52, 0.3)",
-  appDownloadButtonBg: "#1A1A1A",
-  appDownloadButtonBgHover: "#4f4f4f",
+  backgroundColor: "#1f3b64",
+  color: "#f5f5f5",
 };
 const customColor = {
   textGray: "#9c9c9c",
