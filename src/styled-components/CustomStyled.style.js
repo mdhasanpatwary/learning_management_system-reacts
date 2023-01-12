@@ -26,7 +26,7 @@ import { Stack, Paper, styled } from "@mui/material";
 // );
 export const LayoutWrap = styled(Stack)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  height: "100vh",
+  minHeight: "100vh",
 }));
 
 export const FormControl = styled(Stack)(({ theme }) => ({

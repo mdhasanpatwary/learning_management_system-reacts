@@ -3,7 +3,7 @@ import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { BannerWrap } from "./Banner.style";
 import CustomImage from "../utils/CustomImage";
-import BannerImg from "../../../public/image/media/banner.png";
+const BannerImg = "/image/media/banner.png";
 
 const Banner = () => {
   return (
@@ -22,7 +22,7 @@ const Banner = () => {
           </Grid>
           <Grid item xs={12} lg={7} textAlign="center">
             <CustomImage
-              src={BannerImg.src}
+              src={BannerImg}
               altText="Banner Image"
               objectFit="contained"
             />

@@ -31,7 +31,7 @@ function Header() {
     router.push("/auth/sign-up");
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <header>
       <AppBar position="static" color="inherit" elevation={1}>
         <Toolbar
           sx={{
@@ -82,7 +82,7 @@ function Header() {
           </Stack>
         </Toolbar>
       </AppBar>
-    </Box>
+    </header>
   );
 }
 

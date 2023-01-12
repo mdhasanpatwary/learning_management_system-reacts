@@ -1,9 +1,7 @@
 import CustomImage from "./CustomImage";
 
-const Logo = ({ logoURL, width, height }) => {
-  return (
-    <CustomImage atlText="logo" src={logoURL} width={width} height={height} />
-  );
+const Logo = ({ src, width, height }) => {
+  return <CustomImage atlText="logo" src={src} width={width} height={height} />;
 };
 
 Logo.propTypes = {};

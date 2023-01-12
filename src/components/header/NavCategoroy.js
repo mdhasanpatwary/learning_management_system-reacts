@@ -1,6 +1,5 @@
 import * as React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-// import { NavMenuLink } from "./Navbar.style";
 import NavPopover from "./NavPopover";
 import { useTranslation } from "react-i18next";
 import { NavMenuLink } from "./Navbar.style";

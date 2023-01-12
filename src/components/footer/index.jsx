@@ -1,5 +1,11 @@
+import FooterWrap from "./FooterWrap";
+
 const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <footer>
+      <FooterWrap />
+    </footer>
+  );
 };
 
 export default Footer;

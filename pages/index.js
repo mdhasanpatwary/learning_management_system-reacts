@@ -3,7 +3,7 @@ import Banner from "../src/components/banner";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>React Next.Js LMS</title>
         <meta
@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner />
-    </div>
+    </>
   );
 }
 

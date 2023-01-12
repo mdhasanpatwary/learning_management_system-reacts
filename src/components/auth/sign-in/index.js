@@ -5,8 +5,8 @@ const logoURL = "/image/logo.png";
 
 function SignIn() {
   return (
-    <Stack justifyContent="center" alignItems="center" mt="10rem" pb="80px">
-      <Box maxWidth="700px" width="100%" sx={{ padding: "60px" }}>
+    <Stack justifyContent="center" alignItems="center" mt="3rem" pb="2rem">
+      <Box maxWidth="700px" width="100%">
         <Paper sx={{ padding: "3rem" }}>
           <AuthHeader title="Sign In Form" imgUrl={logoURL} />
           <div style={{ marginTop: "2rem" }}>

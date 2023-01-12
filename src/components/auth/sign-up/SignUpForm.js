@@ -1,8 +1,15 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Button, TextField } from "@mui/material";
-import { Stack } from "@mui/system";
+import {
+  Button,
+  TextField,
+  Typography,
+  FormControlLabel,
+  Checkbox,
+  Stack,
+} from "@mui/material";
+import { useRouter } from "next/router";
 
 const validationSchema = yup.object({
   email: yup
@@ -15,10 +22,15 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-function SignInForm() {
+function SignUpForm() {
+  const router = useRouter();
+  const signInClick = () => {
+    router.push("/auth/sign-in");
+  };
   const formik = useFormik({
     initialValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     },
@@ -29,17 +41,28 @@ function SignInForm() {
   });
 
   return (
-    <div>
+    <>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
-          id="name"
-          name="name"
-          label="Name"
-          value={formik.values.name}
+          id="firstName"
+          name="firstName"
+          label="First Name"
+          value={formik.values.firstName}
           onChange={formik.handleChange}
-          error={formik.touched.name && Boolean(formik.errors.name)}
-          helperText={formik.touched.name && formik.errors.name}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+          helperText={formik.touched.firstName && formik.errors.firstName}
+          sx={{ mb: "2rem" }}
+        />
+        <TextField
+          fullWidth
+          id="lastName"
+          name="lastName"
+          label="Last lastName"
+          value={formik.values.lastName}
+          onChange={formik.handleChange}
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+          helperText={formik.touched.lastName && formik.errors.lastName}
           sx={{ mb: "2rem" }}
         />
         <TextField
@@ -63,19 +86,43 @@ function SignInForm() {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
-          sx={{ mb: "2rem" }}
+          sx={{ mb: "1rem" }}
         />
-        <Stack direction="row" gap="1rem">
-          <Button color="secondary" variant="contained" fullWidth type="reset">
-            Reset
-          </Button>
-          <Button color="primary" variant="contained" fullWidth type="submit">
-            Submit
-          </Button>
+        <Stack
+          direction="row"
+          mb={2}
+          justifyContent="space-between"
+          alignItems="center"
+          gap=".5rem"
+        >
+          <FormControlLabel
+            control={<Checkbox defaultChecked />}
+            label="I agree with terms & rules"
+          />
         </Stack>
+        <Button color="primary" variant="contained" fullWidth type="submit">
+          Sign Up
+        </Button>
       </form>
-    </div>
+
+      <Stack
+        direction="row"
+        mt={3}
+        justifyContent="center"
+        alignItems="center"
+        gap=".5rem"
+      >
+        <Typography variant="subtitle1">Already have an account?</Typography>
+        <Typography
+          onClick={signInClick}
+          variant="h6"
+          sx={{ cursor: "pointer" }}
+        >
+          Sign In
+        </Typography>
+      </Stack>
+    </>
   );
 }
 
-export default SignInForm;
+export default SignUpForm;
