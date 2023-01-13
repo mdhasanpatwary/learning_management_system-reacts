@@ -70,18 +70,23 @@ const text = {
 };
 
 const footer = {
-  backgroundColor: "#1f3b64",
+  backgroundColor: "#0a1c3a",
+  bottomBgColor: "#1f3b64",
   color: "#f5f5f5",
 };
+
 const customColor = {
   textGray: "#9c9c9c",
 };
+
 const whiteContainer = {
   main: "#ffffff",
 };
+
 const pink = {
   main: "#FF6D76",
 };
+
 export const lightThemeOptions = {
   components: {
     MuiAvatar: {
