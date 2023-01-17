@@ -40,7 +40,7 @@ function Header() {
             alignItems: "center",
           }}
         >
-          <Stack direction="row" gap="1rem" alignItems="center">
+          <Stack direction="row" gap="1rem" alignItems="center" flexGrow="1">
             <IconButton
               size="large"
               edge="start"

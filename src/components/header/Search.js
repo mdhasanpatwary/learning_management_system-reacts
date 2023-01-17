@@ -6,13 +6,13 @@ import { Search, SearchIconWrapper, StyledInputBase } from "./Navbar.style";
 function SearchBox() {
   const { t } = useTranslation();
   return (
-    <Box>
+    <Box flexGrow="1">
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder={t("Search…")}
+          placeholder={t("Search for Courses…")}
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
