@@ -43,7 +43,7 @@ const ThemeSwitches = () => {
         onChange={handleChange}
       />
       <Typography color={theme.palette.neutral[1000]}>
-        {settings.theme === "light" ? t("Light Mode") : t("Dark Mode")}
+        {/* {settings.theme === "light" ? t("Light Mode") : t("Dark Mode")} */}
       </Typography>
     </Stack>
   );

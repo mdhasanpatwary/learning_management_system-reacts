@@ -5,6 +5,7 @@ import { CustomContainer } from "../../../styled-components/CustomStyled.style";
 import { FooterBottomStyle } from "../Footer.style";
 import { Typography } from "@mui/material";
 import SocialLinks from "./SocialLinks";
+import CustomLanguage from "../../header/CustomLanguage";
 
 function index() {
   return (
@@ -17,9 +18,10 @@ function index() {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Logo src={logoURL} width="120px" />
-            <Typography>© 2023 react-lms, All rights reserved</Typography>
             <SocialLinks />
+            <Typography>© 2023 react-lms, All rights reserved</Typography>
+            {/* <Logo src={logoURL} width="120px" /> */}
+            <CustomLanguage />
           </Stack>
         </CustomContainer>
       </Stack>

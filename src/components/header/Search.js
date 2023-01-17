@@ -6,7 +6,7 @@ import { Search, SearchIconWrapper, StyledInputBase } from "./Navbar.style";
 function SearchBox() {
   const { t } = useTranslation();
   return (
-    <Box flexGrow="1">
+    <Box>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
