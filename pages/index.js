@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Banner from "../src/components/banner";
 
-export default function Home() {
+export default function Home({ category }) {
   return (
     <>
       <Head>
@@ -24,3 +24,23 @@ export default function Home() {
 //     </>
 //   );
 // };
+
+export const getServerSideProps = async () => {
+  const categoryRes = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/mega-categories`,
+    {
+      method: "GET",
+      // headers: {
+      //   "X-software-id": 33571750,
+      //   "X-server": "server",
+      //   origin: process.env.NEXT_CLIENT_HOST_URL,
+      // },
+    }
+  );
+  const category = await categoryRes.json();
+  return {
+    props: {
+      category,
+    },
+  };
+};

@@ -18,6 +18,7 @@ import { Stack } from "@mui/system";
 import ThemeSwitch from "./ThemeSwitch";
 import { useRouter } from "next/router";
 import { CustomContainer } from "../../styled-components/CustomStyled.style";
+import FlotingSearch from "./FlotingSearch";
 const logoURL = "/image/logo.png";
 
 function Header() {
@@ -57,6 +58,7 @@ function Header() {
                 <NavCategoroy />
               </Hidden>
               <Search />
+              <FlotingSearch />
             </Stack>
 
             <Stack direction="row" gap="1rem" alignItems="center">
