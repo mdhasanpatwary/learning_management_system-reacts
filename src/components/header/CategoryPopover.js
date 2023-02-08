@@ -25,6 +25,7 @@ function CategoryPopover({ handleCloseSub, handleClickSub }) {
     router.push({
       pathname: "/category/[id]",
       // query: { id: `${item?.id}-${getModuleId()}` },
+      query: { id: `${item?.id}` },
     });
   };
 
@@ -34,50 +35,52 @@ function CategoryPopover({ handleCloseSub, handleClickSub }) {
         <NavCategoryShimmer />
       ) : (
         <>
-          {categoriesData && categoriesData?.data?.length > 0 && (
+          {categoriesData && categoriesData?.data?.details?.length > 0 && (
             <>
-              {categoriesData?.data?.slice(0, 10)?.map((category, index) => {
-                return (
-                  <Stack
-                    key={category.id}
-                    onClick={() => handleClick(category)}
-                    direction="row"
-                    alignItems="center"
-                    justifyContent="space-between"
-                    padding=".5rem"
-                    gap="1rem"
-                    onMouseEnter={handleClickSub}
-                    sx={{ cursor: "pointer" }}
-                  >
-                    <Stack direction="row" gap=".5rem" alignItems="center">
-                      <CustomImage
-                        src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        altText="Img Alt"
-                        width="18"
-                        height="18"
-                        radius="5"
-                      />
-                      <Typography
-                        variant="body2"
-                        width="120px"
-                        className={classes.textTruncate}
-                      >
-                        {category.title}
-                      </Typography>
+              {categoriesData?.data?.details
+                ?.slice(0, 10)
+                ?.map((category, index) => {
+                  return (
+                    <Stack
+                      key={category.id}
+                      onClick={() => handleClick(category)}
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                      padding=".5rem"
+                      gap="1rem"
+                      onMouseEnter={(event) => handleClickSub(event, category)}
+                      sx={{ cursor: "pointer" }}
+                    >
+                      <Stack direction="row" gap=".5rem" alignItems="center">
+                        <CustomImage
+                          src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                          altText="Img Alt"
+                          width="18"
+                          height="18"
+                          radius="5"
+                        />
+                        <Typography
+                          variant="body2"
+                          width="120px"
+                          className={classes.textTruncate}
+                        >
+                          {category.title}
+                        </Typography>
+                      </Stack>
+                      <Stack direction="row" gap=".3rem" alignItems="center">
+                        <Typography variant="body2">(10)</Typography>
+                        <ArrowForwardIosIcon
+                          style={{
+                            width: "12px",
+                            height: "12px",
+                          }}
+                          // color="primary"
+                        />
+                      </Stack>
                     </Stack>
-                    <Stack direction="row" gap=".3rem" alignItems="center">
-                      <Typography variant="body2">(10)</Typography>
-                      <ArrowForwardIosIcon
-                        style={{
-                          width: "12px",
-                          height: "12px",
-                        }}
-                        // color="primary"
-                      />
-                    </Stack>
-                  </Stack>
-                );
-              })}
+                  );
+                })}
             </>
           )}
         </>
