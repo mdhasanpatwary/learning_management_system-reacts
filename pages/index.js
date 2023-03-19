@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Banner from "../src/components/banner";
+import Categories from "../src/components/categories";
+import Feature from "../src/components/feature";
 
 export default function Home({ category }) {
   return (
@@ -13,6 +15,8 @@ export default function Home({ category }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner />
+      <Feature />
+      <Categories />
     </>
   );
 }

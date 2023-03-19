@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
+const avatar = "/image/avatar/avatar.png";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -26,7 +27,7 @@ function Profile() {
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <Avatar alt="Remy Sharp" src={avatar} />
         </IconButton>
       </Tooltip>
       <Menu

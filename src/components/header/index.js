@@ -18,7 +18,6 @@ import { Stack } from "@mui/system";
 import ThemeSwitch from "./ThemeSwitch";
 import { useRouter } from "next/router";
 import { CustomContainer } from "../../styled-components/CustomStyled.style";
-import FlotingSearch from "./FlotingSearch";
 const logoURL = "/image/logo.png";
 
 function Header() {
@@ -29,6 +28,16 @@ function Header() {
   };
   const signUpClick = () => {
     router.push("/auth/sign-up");
+  };
+  let token = undefined;
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token");
+  }
+  const signOutClick = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+    }
+    router.push("/auth/sign-in");
   };
   return (
     <header>
@@ -58,7 +67,6 @@ function Header() {
                 <NavCategoroy />
               </Hidden>
               <Search />
-              <FlotingSearch />
             </Stack>
 
             <Stack direction="row" gap="1rem" alignItems="center">
@@ -78,15 +86,27 @@ function Header() {
               </MenuItem>
               <Hidden mdDown>
                 <Divider orientation="vertical" variant="middle" flexItem />
-                <Button onClick={signInClick} size="small" color="inherit">
-                  {t("Login")}
-                </Button>
-                <Button onClick={signUpClick} size="small" variant="contained">
-                  {t("Sign Up")}
-                </Button>
+                {token ? (
+                  <Button onClick={signOutClick} size="small" color="inherit">
+                    Sign Out
+                  </Button>
+                ) : (
+                  <>
+                    <Button onClick={signInClick} size="small" color="inherit">
+                      {t("Login")}
+                    </Button>
+                    <Button
+                      onClick={signUpClick}
+                      size="small"
+                      variant="contained"
+                    >
+                      {t("Sign Up")}
+                    </Button>
+                  </>
+                )}
               </Hidden>
               <ThemeSwitch />
-              {/* <Profile /> */}
+              {token && <Profile />}
             </Stack>
           </Toolbar>
         </CustomContainer>

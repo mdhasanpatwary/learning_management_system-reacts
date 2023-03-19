@@ -47,3 +47,13 @@ export const CustomContainer = styled(Stack)(({ theme, maxWidth }) => ({
   paddingInline: "1rem",
   marginInline: "auto",
 }));
+
+export const Media = styled("div")(({ theme, gap }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: gap ? gap : "1rem",
+}));
+
+export const MediaBody = styled("div")(({ theme }) => ({
+  flex: 1,
+}));

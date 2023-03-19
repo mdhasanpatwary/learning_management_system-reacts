@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { onErrorResponse } from "../../../api-manage/api-error-response/ErrorResponses";
 import { useFormik } from "formik";
+import { t } from "i18next";
 import * as yup from "yup";
 import {
   Button,
@@ -12,8 +14,10 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 import SignInWithGoogle from "./SignInWithGoogle";
 import SignInAs from "./SignInAs";
+import { useSignIn } from "../../../api-manage/hooks/react-query/auth/useSignIn";
 
 const validationSchema = yup.object({
   email: yup
@@ -41,6 +45,19 @@ function SignInForm() {
     event.preventDefault();
   };
 
+  const handleTokenAfterSignUp = async (response) => {
+    if (response) {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("token", response?.details.token);
+        // await profileRefetch();
+      }
+      toast.success(t("Signin SuccessFull"));
+      router.push("/");
+    }
+  };
+
+  const { mutate, isLoading, error } = useSignIn();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -49,7 +66,14 @@ function SignInForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      mutate(values, {
+        onSuccess: async (response) => {
+          handleTokenAfterSignUp(response);
+          console.log("Login Success");
+        },
+        onError: onErrorResponse,
+      });
     },
   });
 
@@ -124,7 +148,7 @@ function SignInForm() {
         </Button>
       </form>
       <SignInAs setSignInCredentials={setSignInCredentials} />
-      <SignInWithGoogle />
+      {/* <SignInWithGoogle /> */}
       <Stack
         direction="row"
         mt={3}
