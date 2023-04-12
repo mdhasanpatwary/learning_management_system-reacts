@@ -6,6 +6,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useGetCategories } from "../../api-manage/hooks/react-query/all-category/all-category";
 import NavCategoryShimmer from "./NavCategoryShimmer";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   textTruncate: {
@@ -18,9 +19,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CategoryPopover({ handleCloseSub, handleClickSub }) {
+  const { categoryData } = useSelector((state) => state.categoryData);
+  const { configData } = useSelector((state) => state.configData);
+  const app_url = configData?.details?.app_url;
   const classes = useStyles();
   const router = useRouter();
-  const { data: categoriesData, isFetching } = useGetCategories();
+
+  // const { data: categoriesData, isFetching } = useGetCategories();
   const handleClick = (item) => {
     router.push({
       pathname: "/category/[id]",
@@ -31,60 +36,64 @@ function CategoryPopover({ handleCloseSub, handleClickSub }) {
 
   return (
     <Stack>
-      {isFetching ? (
+      {/* {isFetching ? (
         <NavCategoryShimmer />
       ) : (
+        <> */}
+      {categoryData && categoryData?.length > 0 && (
         <>
-          {categoriesData && categoriesData?.data?.details?.length > 0 && (
-            <>
-              {categoriesData?.data?.details
-                ?.slice(0, 10)
-                ?.map((category, index) => {
-                  return (
-                    <Stack
-                      key={category.id}
-                      onClick={() => handleClick(category)}
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      padding=".5rem"
-                      gap="1rem"
-                      onMouseEnter={(event) => handleClickSub(event, category)}
-                      sx={{ cursor: "pointer" }}
-                    >
-                      <Stack direction="row" gap=".5rem" alignItems="center">
-                        <CustomImage
-                          src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                          altText="Img Alt"
-                          width="18"
-                          height="18"
-                          radius="5"
-                        />
-                        <Typography
-                          variant="body2"
-                          width="120px"
-                          className={classes.textTruncate}
-                        >
-                          {category.title}
-                        </Typography>
-                      </Stack>
-                      <Stack direction="row" gap=".3rem" alignItems="center">
-                        <Typography variant="body2">(10)</Typography>
-                        <ArrowForwardIosIcon
-                          style={{
-                            width: "12px",
-                            height: "12px",
-                          }}
-                          // color="primary"
-                        />
-                      </Stack>
-                    </Stack>
-                  );
-                })}
-            </>
-          )}
+          {categoryData?.slice(0, 10)?.map((category) => {
+            const imgUrl = app_url + category.thumbnail_image;
+
+            return (
+              <Stack
+                key={category.id}
+                onClick={() => handleClick(category)}
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                padding=".5rem"
+                gap="1rem"
+                onMouseEnter={(event) => handleClickSub(event, category)}
+                sx={{ cursor: "pointer" }}
+              >
+                <Stack direction="row" gap=".5rem" alignItems="center">
+                  <CustomImage
+                    src={imgUrl}
+                    altText="Img Alt"
+                    width="18"
+                    height="18"
+                    radius="5"
+                  />
+                  <Typography
+                    variant="body2"
+                    width="120px"
+                    className={classes.textTruncate}
+                  >
+                    {category.title}
+                  </Typography>
+                </Stack>
+                {category.has_child && (
+                  <Stack direction="row" gap=".3rem" alignItems="center">
+                    <Typography variant="body2">
+                      ({category.total_subcategory})
+                    </Typography>
+                    <ArrowForwardIosIcon
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                      }}
+                      // color="primary"
+                    />
+                  </Stack>
+                )}
+              </Stack>
+            );
+          })}
         </>
       )}
+      {/* </>
+      )} */}
     </Stack>
   );
 }

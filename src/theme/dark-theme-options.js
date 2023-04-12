@@ -63,6 +63,11 @@ const error = {
   contrastText: neutral[900],
 };
 
+const border = {
+  main: "#ddd",
+  dark: "#222",
+};
+
 const text = {
   primary: "#EDF2F7",
   secondary: "#A0AEC0",
@@ -197,6 +202,7 @@ export const darkThemeOptions = {
     customColor,
     whiteContainer,
     pink,
+    border,
   },
   shadows: [
     "none",

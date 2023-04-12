@@ -6,8 +6,11 @@ import { FooterBottomStyle } from "../Footer.style";
 import { Typography } from "@mui/material";
 import SocialLinks from "./SocialLinks";
 import CustomLanguage from "../../header/CustomLanguage";
+import { useSelector } from "react-redux";
 
 function index() {
+  const { configData } = useSelector((state) => state.configData);
+  const copyrightText = configData?.details?.copyright_text;
   return (
     <FooterBottomStyle>
       <Stack pt={2} pb={2}>
@@ -19,7 +22,7 @@ function index() {
             justifyContent="space-between"
           >
             <SocialLinks />
-            <Typography>© 2023 react-lms, All rights reserved</Typography>
+            <Typography>{copyrightText}</Typography>
             {/* <Logo src={logoURL} width="120px" /> */}
             <CustomLanguage />
           </Stack>

@@ -23,7 +23,6 @@ const divider = "#E6E8F0";
 
 const primary = {
   main: "#039D55",
-  main: "#039D55",
   light: "#828DF8",
   dark: "#1c6641",
   contrastText: "#FFFFFF",
@@ -62,6 +61,11 @@ const error = {
   light: "#DA6868",
   dark: "#922E2E",
   contrastText: "#FFFFFF",
+};
+
+const border = {
+  main: "#ddd",
+  dark: "#222",
 };
 
 const text = {
@@ -203,6 +207,7 @@ export const lightThemeOptions = {
     customColor,
     whiteContainer,
     pink,
+    border,
   },
   shadows: [
     "none",

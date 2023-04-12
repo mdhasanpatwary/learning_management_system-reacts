@@ -17,11 +17,11 @@ export const CustomImageWrap = styled(Box)(
   })
 );
 
-function CustomImage({ src, altText, width, height, radius }) {
-  const [imgSrc, setImgSrc] = useState("");
-  useEffect(() => {
-    setImgSrc(src);
-  }, [src]);
+function CustomImage({ src, altText, width, height, radius, ...rest }) {
+  // const [imgSrc, setImgSrc] = useState("");
+  // useEffect(() => {
+  //   setImgSrc(src);
+  // }, [src]);
 
   return (
     <CustomImageWrap
@@ -31,13 +31,15 @@ function CustomImage({ src, altText, width, height, radius }) {
       borderRadius={radius && `${radius / 16}rem`}
     >
       <img
-        src={imgSrc}
-        alt={altText}
-        onError={() => {
+        src={src}
+        onError={({ target }) => {
           // currentTarget.onerror = null; // prevents looping
           //   setImgSrc(placeholder.src);
-          setImgSrc("https://via.placeholder.com/1200");
+          // setImgSrc("https://via.placeholder.com/1200");
+          target.src = "https://via.placeholder.com/1200";
         }}
+        {...rest}
+        alt={altText}
       />
       {/* <Image
         src={imgSrc}

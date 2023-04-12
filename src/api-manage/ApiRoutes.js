@@ -1,4 +1,9 @@
+export const config_api = "/api/v1/get-general-settings";
 export const categories_api = "/api/v1/mega-categories";
 export const subCategories_api = "/api/v1/sub-categories-of-category";
 export const signIn_api = "/api/v1/login-as-student";
 export const signUp_api = "/api/v1/register-student";
+export const language_api = "/api/v1/get-language-list";
+export const home_banner_api = "/api/v1/get-home-page-banner-details";
+export const feature_list_api = "/api/v1/get-home-page-feature-list";
+export const create_category_api = "/api/v1/create-category";

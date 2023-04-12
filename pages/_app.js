@@ -1,5 +1,8 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "@mui/material/styles";
+import { Provider as ReduxProvider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { store } from "../src/redux/store";
 import { createTheme } from "../src/theme";
 import { Toaster } from "react-hot-toast";
 import "../src/language/i18n";
@@ -12,6 +15,8 @@ import {
 
 function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
+  //storing persisted data
+  let persistor = persistStore(store);
 
   const renderWithLayout =
     Component.getLayout ||
@@ -21,22 +26,24 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SettingsProvider>
-        <SettingsConsumer>
-          {(value) => (
-            <ThemeProvider
-              theme={createTheme({
-                direction: value?.settings?.direction,
-                responsiveFontSizes: value?.settings?.responsiveFontSizes,
-                mode: value?.settings?.theme,
-              })}
-            >
-              <Toaster position="top-center" />
-              {renderWithLayout(<Component {...pageProps} />)}
-            </ThemeProvider>
-          )}
-        </SettingsConsumer>
-      </SettingsProvider>
+      <ReduxProvider store={store}>
+        <SettingsProvider>
+          <SettingsConsumer>
+            {(value) => (
+              <ThemeProvider
+                theme={createTheme({
+                  direction: value?.settings?.direction,
+                  responsiveFontSizes: value?.settings?.responsiveFontSizes,
+                  mode: value?.settings?.theme,
+                })}
+              >
+                <Toaster position="top-center" />
+                {renderWithLayout(<Component {...pageProps} />)}
+              </ThemeProvider>
+            )}
+          </SettingsConsumer>
+        </SettingsProvider>
+      </ReduxProvider>
     </QueryClientProvider>
   );
 }

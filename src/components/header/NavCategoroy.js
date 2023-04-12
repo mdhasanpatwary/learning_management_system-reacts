@@ -4,6 +4,7 @@ import NavPopover from "./NavPopover";
 import { useTranslation } from "react-i18next";
 import { NavMenuLink } from "./Navbar.style";
 import { useGetSubCategories } from "../../api-manage/hooks/react-query/all-category/useGetSubCategory";
+import { Box } from "@mui/system";
 
 function NavCategoroy() {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ function NavCategoroy() {
 
   return (
     <>
-      <div onMouseEnter={handleClick} onMouseLeave={handleClose}>
+      <Box onMouseEnter={handleClick} onMouseLeave={handleClose}>
         <NavMenuLink>
           {t("Categories")} <KeyboardArrowDownIcon />
         </NavMenuLink>
@@ -56,7 +57,7 @@ function NavCategoroy() {
           handleClickSub={handleClickSub}
           subCategory={subCategory}
         />
-      </div>
+      </Box>
     </>
   );
 }

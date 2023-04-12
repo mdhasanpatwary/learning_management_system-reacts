@@ -5,42 +5,54 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-
-const socialMedia = [
-  {
-    icon: FacebookIcon,
-    url: "https://facebook.com/",
-  },
-  {
-    icon: TwitterIcon,
-    url: "https://twitter.com/",
-  },
-  {
-    icon: InstagramIcon,
-    url: "https://instagram.com/",
-  },
-  {
-    icon: WhatsAppIcon,
-    url: "https://whatsapp.com/",
-  },
-];
+import { useSelector } from "react-redux";
 
 const SocialLinks = () => {
+  const { configData } = useSelector((state) => state.configData);
+  const socialMedia = configData?.details?.social_link;
   return (
     <Stack direction="row" gap="1.25rem">
-      {socialMedia.map((item, index) => {
-        const { icon, url } = item;
-        return (
-          <Link target="_blank" key={index} href={url}>
-            <Typography
-              component={icon}
-              color="whiteContainer.main"
-              sx={{ inlineSize: "1rem", blockSize: "1rem" }}
-            />
-          </Link>
-        );
-      })}
+      {socialMedia &&
+        socialMedia?.length > 0 &&
+        socialMedia?.map((item) => {
+          const { url, id, name } = item;
+
+          switch (name) {
+            case "facebook":
+              return <SocialLink url={url} icon={FacebookIcon} key={id} />;
+            case "twitter":
+              return <SocialLink url={url} icon={TwitterIcon} key={id} />;
+            case "instagram":
+              return <SocialLink url={url} icon={InstagramIcon} key={id} />;
+            case "whatsapp":
+              return <SocialLink url={url} icon={WhatsAppIcon} key={id} />;
+            default:
+              return null;
+          }
+
+          // return (
+          //   <Link target="_blank" key={id} href={url}>
+          //     <Typography
+          //       component={icon}
+          //       color="whiteContainer.main"
+          //       sx={{ inlineSize: "1rem", blockSize: "1rem" }}
+          //     />
+          //   </Link>
+          // );
+        })}
     </Stack>
+  );
+};
+
+const SocialLink = ({ url, icon }) => {
+  return (
+    <Link target="_blank" href={url}>
+      <Typography
+        component={icon}
+        color="whiteContainer.main"
+        sx={{ inlineSize: "1rem", blockSize: "1rem" }}
+      />
+    </Link>
   );
 };
 

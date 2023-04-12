@@ -5,6 +5,7 @@ import CategoryPopover from "./CategoryPopover";
 
 import CustomImage from "../utils/CustomImage";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   textTruncate: {
@@ -31,6 +32,10 @@ function NavPopover({
   subCategory,
 }) {
   const classes = useStyles();
+  const { categoryData } = useSelector((state) => state.categoryData);
+  const { configData } = useSelector((state) => state.configData);
+  const app_url = configData?.details?.app_url;
+
   return (
     <Stack>
       <Popover
@@ -52,7 +57,7 @@ function NavPopover({
         <CategoryPopover handleClickSub={handleClickSub} />
       </Popover>
 
-      {subCategory && (
+      {subCategory && subCategory?.details?.length > 0 && (
         <Popover
           open={openSub}
           anchorEl={anchorElSub}
@@ -73,11 +78,12 @@ function NavPopover({
             {subCategory?.details?.length > 0 ? (
               <>
                 {subCategory?.details?.map((subCategory) => {
+                  const imgUrl = app_url + subCategory.thumbnail_image;
                   return (
                     <Link href="/" key={subCategory.id}>
                       <Stack direction="row" gap=".5rem" alignItems="center">
                         <CustomImage
-                          src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                          src={imgUrl}
                           altText="Img Alt"
                           width="18"
                           height="18"
